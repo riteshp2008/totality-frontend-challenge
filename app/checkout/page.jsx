@@ -1,4 +1,3 @@
-import { withAuth } from "@clerk/nextjs";
 import { useBooking } from "../context/BookingContext";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -36,4 +35,4 @@ function CheckoutPage() {
   );
 }
 
-export default withAuth(CheckoutPage);
+export default CheckoutPage;
