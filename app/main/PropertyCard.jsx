@@ -1,9 +1,16 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Star, MapPin, Users } from "lucide-react";
+import { Star, MapPin, Users, ShoppingCart } from "lucide-react";
+import { useBooking } from "../context/BookingContext";
 
 export default function PropertyCard({ property }) {
+  const { addPropertyToBooking } = useBooking();
+
+  const handleAddToCart = () => {
+    addPropertyToBooking(property);
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 flex flex-col h-full">
       <div className="relative">
@@ -36,14 +43,24 @@ export default function PropertyCard({ property }) {
             ${property.price}
             <span className="text-base font-normal text-gray-600">/night</span>
           </p>
-          <Link href={`/properties/${property.id}`} className="block w-full">
+          <div className="grid grid-cols-2 gap-2">
             <Button
-              variant="default"
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+              variant="outline"
+              className="w-full border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
+              onClick={handleAddToCart}
             >
-              Book Now
+              <ShoppingCart className="w-4 h-4 mr-2" />
+              Add to Cart
             </Button>
-          </Link>
+            <Link href={`/properties/${property.id}`} className="block w-full">
+              <Button
+                variant="default"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+              >
+                Book Now
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
