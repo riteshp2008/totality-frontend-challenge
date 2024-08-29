@@ -34,9 +34,6 @@ export default function Header() {
             <Link href="/sign-in">
               <Button variant="outline">Sign In</Button>
             </Link>
-            <Link href="/sign-up">
-              <Button variant="primary">Sign Up</Button>
-            </Link>
           </SignedOut>
         </nav>
       </div>
