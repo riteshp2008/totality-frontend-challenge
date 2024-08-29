@@ -19,15 +19,13 @@ export default function Header() {
               href="/properties"
               className="text-base font-medium flex items-center"
             >
-              <Building size={24} className="mr-2" />
-              Properties
+              <Building size={24} />
             </Link>
             <Link
               href="/cart"
               className="text-base font-medium flex items-center"
             >
-              <ShoppingCart size={24} className="mr-2" />
-              Cart
+              <ShoppingCart size={24} />
             </Link>
             <UserButton />
           </SignedIn>
