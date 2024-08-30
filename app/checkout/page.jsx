@@ -13,6 +13,7 @@ import {
   SelectItem,
 } from "@/components/ui/select"; // Adjusted import for Select
 import { toast } from "@/components/ui/use-toast"; // Ensure this is correctly imported and used
+import { CircleCheckBig, MapPin, User } from "lucide-react";
 
 function CheckoutPage() {
   const { bookedProperties } = useBooking();
@@ -56,10 +57,16 @@ function CheckoutPage() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       toast({
-        title: "Checkout Complete",
+        title: (
+          <div className="flex space-x-4">
+            <CircleCheckBig className="text-green-500" />
+            <p>Checkout Complete</p>
+          </div>
+        ),
         description: "Your booking has been confirmed.",
         status: "success",
       });
+      router.push("/properties");
     } catch (error) {
       toast({
         title: "Error",
@@ -77,27 +84,59 @@ function CheckoutPage() {
   );
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-2">
       <h1 className="text-4xl font-bold my-8 text-center">Checkout</h1>
       <div className="grid grid-cols-1 gap-6 mb-8">
         {bookedProperties.map((property) => (
           <Card
             key={property.id}
-            className="p-4 shadow-md flex flex-col md:flex-row items-center"
+            className="p-2 shadow-md flex flex-col md:flex-row items-center"
           >
             <img
               src={property.image}
               alt={property.title}
               className="w-full md:w-48 h-48 object-cover rounded-lg"
             />
-            <div className="ml-4">
+            <div className="ml-2">
               <CardHeader>
                 <CardTitle className="text-2xl font-semibold">
                   {property.title}
                 </CardTitle>
+                <div className="flex items-start text-gray-600 mb-4 space-x-6">
+                  <div className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    <span className="text-sm">{property.location}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <User className="w-4 h-4 mr-1" />
+                    <span className="text-sm">
+                      {property.bedrooms} Bedrooms
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-gray-600 text-sm my-1">
+                    {property.description}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {property.amenities.map((amenity, index) => (
+                    <span
+                      key={index}
+                      className="bg-indigo-50 text-indigo-700 rounded-full px-2 py-1 text-xs font-medium"
+                    >
+                      {amenity}
+                    </span>
+                  ))}
+                </div>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-bold">₹{property.price}/night</p>
+                <p className="text-2xl font-bold text-indigo-600">
+                  ₹{property.price}
+                  <span className="text-base font-normal text-gray-600">
+                    /night
+                  </span>
+                </p>
               </CardContent>
             </div>
           </Card>

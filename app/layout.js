@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./main/Header";
 import { Toaster } from "@/components/ui/toaster";
 import { BookingProvider } from "./context/BookingContext";
+import Footer from "./main/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
           <BookingProvider>
             <Header />
             {children}
+            <Footer />
           </BookingProvider>
         </ClerkProvider>
         <Toaster />
