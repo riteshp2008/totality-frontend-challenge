@@ -402,7 +402,7 @@ export function GlobeMain() {
   ];
 
   return (
-    <div className="flex flex-row items-center justify-center py-8 h-screen md:h-auto bg-black relative w-full">
+    <div className="flex flex-row items-center justify-center py-6 h-screen md:h-auto bg-black relative w-full">
       <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-[35rem] md:h-[40rem] px-4">
         {/* Move the World component to the back */}
         <div className="absolute w-full -bottom-20 right-1 h-full md:h-full z-0">
