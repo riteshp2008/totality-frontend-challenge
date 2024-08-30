@@ -20,11 +20,16 @@ export function BookingProvider({ children }) {
     );
   };
 
+  const clearBooking = () => {
+    setBookedProperties([]);
+  };
+
   const value = {
     bookedProperties,
     addPropertyToBooking,
     removePropertyFromBooking,
     bookingCount: bookedProperties.length,
+    clearBooking,
   };
 
   return (

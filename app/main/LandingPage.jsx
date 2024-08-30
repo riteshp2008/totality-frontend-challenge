@@ -2,23 +2,16 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Search,
-  Calendar,
-  Star,
-  MessageSquare,
-  Key,
-  HomeIcon,
-  Clock,
-  Shield,
-} from "lucide-react";
+import { MessageSquare, Key, HomeIcon, Clock, Shield } from "lucide-react";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { GlobeMain } from "./globeMain";
 
 export default function Component() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="relative w-full py-32 md:py-48 lg:py-64 overflow-hidden">
+        <GlobeMain />
+        {/* <section className="relative w-full py-32 md:py-48 lg:py-64 overflow-hidden">
           <div
             className="absolute inset-0 z-0 transition-transform duration-1000 ease-in-out transform scale-105 animate-ken-burns"
             style={{
@@ -73,7 +66,7 @@ export default function Component() {
               </SignedIn>
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">

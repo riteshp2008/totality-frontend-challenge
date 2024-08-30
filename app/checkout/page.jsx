@@ -11,12 +11,12 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/components/ui/select"; // Adjusted import for Select
-import { toast } from "@/components/ui/use-toast"; // Ensure this is correctly imported and used
+} from "@/components/ui/select";
+import { toast } from "@/components/ui/use-toast";
 import { CircleCheckBig, MapPin, User } from "lucide-react";
 
 function CheckoutPage() {
-  const { bookedProperties } = useBooking();
+  const { bookedProperties, clearBooking } = useBooking(); // Added clearBooking
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ function CheckoutPage() {
     email: "",
     creditCard: "",
     phoneNumber: "",
-    countryCode: "+91", // Default country code, adjust as needed
+    countryCode: "+91",
   });
   const [errors, setErrors] = useState({});
   const [isProcessing, setIsProcessing] = useState(false);
@@ -66,6 +66,7 @@ function CheckoutPage() {
         description: "Your booking has been confirmed.",
         status: "success",
       });
+      clearBooking();
       router.push("/properties");
     } catch (error) {
       toast({
