@@ -11,7 +11,6 @@ export default function Cart() {
   const router = useRouter();
   const { bookedProperties, removePropertyFromBooking } = useBooking();
 
-  // Ensure bookedProperties is an array and calculate total price safely
   const safeBookedProperties = Array.isArray(bookedProperties)
     ? bookedProperties
     : [];
@@ -20,7 +19,6 @@ export default function Cart() {
     0
   );
 
-  // Check if the user is authenticated
   React.useEffect(() => {
     if (isLoaded && !userId) {
       router.push("/sign-in");
@@ -36,7 +34,7 @@ export default function Cart() {
   }
 
   if (!userId) {
-    return null; // This will prevent any flash of content before redirect
+    return null;
   }
 
   const handleRemoveProperty = (propertyId) => {
@@ -61,12 +59,12 @@ export default function Cart() {
             {safeBookedProperties.map((property) => (
               <div
                 key={property.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row"
+                className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row items-center"
               >
                 <img
                   src={property.image}
                   alt={property.title}
-                  className="w-full md:w-48 h-48 object-cover"
+                  className="w-full md:w-48 h-48 object-cover rounded-lg"
                 />
                 <div className="p-4 flex-grow flex flex-col justify-between">
                   <div>
@@ -110,10 +108,13 @@ export default function Cart() {
             <div className="flex justify-between items-center mb-6">
               <span className="text-gray-600">Total Price:</span>
               <span className="text-2xl font-bold text-indigo-600">
-                ${totalPrice.toFixed(2)}
+                ₹{totalPrice.toFixed(2)}
               </span>
             </div>
-            <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+            <Button
+              onClick={() => router.push("/checkout")}
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+            >
               Proceed to Checkout
             </Button>
           </div>

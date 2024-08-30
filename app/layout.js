@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { BookingProvider } from "./context/BookingContext";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./main/Header";
+import { Toaster } from "@/components/ui/toaster";
+import { BookingProvider } from "./context/BookingContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
             {children}
           </BookingProvider>
         </ClerkProvider>
+        <Toaster />
       </body>
     </html>
   );
