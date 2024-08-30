@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MapPin, Users, ShoppingCart, CircleCheckBig } from "lucide-react";
@@ -5,11 +6,16 @@ import { useBooking } from "../context/BookingContext";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
 import QuickViewModal from "./QuickViewModal";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function PropertyCard({ property }) {
   const { addPropertyToBooking } = useBooking();
   const { toast } = useToast();
   const [isQuickViewOpen, setQuickViewOpen] = useState(false);
+  const router = useRouter();
 
   const handleAddToCart = (e) => {
     e.stopPropagation(); // Prevent the click from bubbling up to the parent div
@@ -63,14 +69,24 @@ export default function PropertyCard({ property }) {
                 /night
               </span>
             </p>
-            <Button
-              variant="outline"
-              className="w-full border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
-              onClick={handleAddToCart}
-            >
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Add to Cart
-            </Button>
+            <SignedIn>
+              <Button
+                variant="outline"
+                className="w-full border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
+                onClick={handleAddToCart}
+              >
+                <ShoppingCart className="w-4 h-4 mr-2" />
+                Add to Cart
+              </Button>
+            </SignedIn>
+            <SignedOut>
+              <Button
+                variant="outline"
+                className="w-full border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
+              >
+                <Link href="/sign-in">Sign-In</Link>
+              </Button>
+            </SignedOut>
           </div>
         </div>
       </div>

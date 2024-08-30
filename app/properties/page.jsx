@@ -4,7 +4,7 @@ import { useState } from "react";
 import PropertyCard from "../main/PropertyCard";
 import PropertyFilter from "../main/PropertyFilter";
 
-const dummyProperties = [
+export const dummyProperties = [
   {
     id: "1",
     title: "Cozy Cottage",
