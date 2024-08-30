@@ -403,9 +403,9 @@ export function GlobeMain() {
 
   return (
     <div className="flex flex-row items-center justify-center py-8 h-screen md:h-auto bg-black relative w-full">
-      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-[35rem] md:h-[40rem] px-4">
         {/* Move the World component to the back */}
-        <div className="absolute w-full -bottom-20 -right-16 md:right-0 h-96 md:h-full z-0">
+        <div className="absolute w-full -bottom-20 h-full md:h-full z-0">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
 
@@ -457,14 +457,6 @@ export function GlobeMain() {
                 </Link>
               </div>
             </SignedOut>
-            <SignedIn>
-              <div
-                className="w-full max-w-md space-y-4 animate-fade-in-up"
-                style={{ animationDelay: "0.2s" }}
-              >
-                <p className="text-lg text-white">Welcome!</p>
-              </div>
-            </SignedIn>
           </div>
         </motion.div>
 
