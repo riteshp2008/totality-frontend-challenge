@@ -1,9 +1,13 @@
+"use client";
 import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Building, Shapes, ShoppingCart } from "lucide-react";
+import { useBooking } from "../context/BookingContext";
 
 export default function Header() {
+  const { bookingCount } = useBooking();
+
   return (
     <header className="bg-white shadow">
       <div className="container flex justify-between items-center py-4">
@@ -23,9 +27,14 @@ export default function Header() {
             </Link>
             <Link
               href="/cart"
-              className="text-base font-medium flex items-center"
+              className="text-base font-medium flex items-center relative"
             >
               <ShoppingCart size={24} />
+              {bookingCount > 0 && (
+                <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                  {bookingCount}
+                </span>
+              )}
             </Link>
             <UserButton />
           </SignedIn>

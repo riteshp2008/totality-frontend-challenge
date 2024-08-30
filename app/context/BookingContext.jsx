@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const BookingContext = createContext();
 
@@ -14,19 +14,20 @@ export function BookingProvider({ children }) {
     setBookedProperties([...bookedProperties, property]);
   };
 
-  const removePropertyFromBooking = (id) => {
-    setBookedProperties(bookedProperties.filter((p) => p.id !== id));
+  const removePropertyFromBooking = (propertyId) => {
+    setBookedProperties(
+      bookedProperties.filter((property) => property.id !== propertyId)
+    );
+  };
+
+  const value = {
+    bookedProperties,
+    addPropertyToBooking,
+    removePropertyFromBooking,
+    bookingCount: bookedProperties.length,
   };
 
   return (
-    <BookingContext.Provider
-      value={{
-        bookedProperties,
-        addPropertyToBooking,
-        removePropertyFromBooking,
-      }}
-    >
-      {children}
-    </BookingContext.Provider>
+    <BookingContext.Provider value={value}>{children}</BookingContext.Provider>
   );
 }
