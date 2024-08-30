@@ -186,7 +186,7 @@ export default function Component() {
                     <MessageSquare className="h-12 w-12 text-blue-500 mb-4" />
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-700 mb-4">"{testimonial.text}"</p>
+                    <p className="text-gray-700 mb-4">{testimonial.text}</p>
                     <p className="font-bold">- {testimonial.name}</p>
                   </CardContent>
                 </Card>
