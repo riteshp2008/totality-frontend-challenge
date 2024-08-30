@@ -89,7 +89,7 @@ export default function Cart() {
                       className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105 flex items-center"
                     >
                       <Trash2 className="mr-2 h-4 w-4" />
-                      Remove
+                      
                     </Button>
                   </div>
                 </div>
