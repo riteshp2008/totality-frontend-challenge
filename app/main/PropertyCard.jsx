@@ -18,7 +18,7 @@ export default function PropertyCard({ property }) {
   const router = useRouter();
 
   const handleAddToCart = (e) => {
-    e.stopPropagation(); // Prevent the click from bubbling up to the parent div
+    e.stopPropagation(); 
     addPropertyToBooking(property);
     toast({
       title: (

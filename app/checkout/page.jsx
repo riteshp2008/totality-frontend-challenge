@@ -16,7 +16,7 @@ import { toast } from "@/components/ui/use-toast";
 import { CircleCheckBig, MapPin, User } from "lucide-react";
 
 function CheckoutPage() {
-  const { bookedProperties, clearBooking } = useBooking(); // Added clearBooking
+  const { bookedProperties, clearBooking } = useBooking(); 
   const router = useRouter();
 
   const [formData, setFormData] = useState({
