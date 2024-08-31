@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className="bg-white shadow">
       <div className="container flex justify-between items-center py-4">
-        <div className="text-xl lg:text-2xl font-semibold flex relative">
+        <div className="text-sm md:text-lg lg:text-2xl font-semibold flex relative">
           <Link href="/" className="flex items-center">
             <Shapes size={24} className="mr-2" />
             DreamStay
